@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción de Ventas</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Predicción de Ventas mediante Regresión Lineal</h1>
+
+        <form action="/predecir" method="POST">
+
+            <label>
+                Inversión en publicidad:
+            </label>
+
+            <input
+                type="number"
+                step="0.01"
+                name="publicidad"
+                required>
+
+            <button type="submit">
+                Predecir
+            </button>
+
+        </form>
+
+        {% if resultado %}
+            <h2>
+                Ventas estimadas: {{ resultado }}
+            </h2>
+        {% endif %}
+
+        {% if error %}
+            <p class="error">
+                {{ error }}
+            </p>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
